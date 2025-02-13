@@ -3,9 +3,9 @@ const { getProducts, createProduct, updateProduct, deleteProduct } = require('..
 
 const router = express.Router();
 
-router.get('/getProduct', getProducts);
-router.post('/addProducts', createProduct);
-router.put('/updateProduct/:id', updateProduct);
-router.delete('/deleteProduct/:id', deleteProduct);
+router.get('/get-product', getProducts);
+router.post('/add-products', createProduct);
+router.put('/update-product/:id', updateProduct);
+router.delete('/delete-product/:id', deleteProduct);
 
 module.exports = router;
