@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { editProduct, fetchProducts } from "../api";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button, Container, TextField, Typography, Box } from "@mui/material";
+import { Button, Container, TextField, Typography, Box, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -10,6 +10,7 @@ const EditProduct = () => {
   const [price, setPrice] = useState("");
   const [nameError, setNameError] = useState("");
   const [priceError, setPriceError] = useState("");
+  const [openModal, setOpenModal] = useState(false); // State to control modal visibility
 
   useEffect(() => {
     fetchProducts().then((res) => {
@@ -42,8 +43,19 @@ const EditProduct = () => {
     }
 
     if (valid) {
-      editProduct(id, { name, price }).then(() => navigate("/products"));
+      setOpenModal(true); // Open confirmation modal if valid
     }
+  };
+
+  const handleConfirmUpdate = () => {
+    editProduct(id, { name, price }).then(() => {
+      setOpenModal(false); // Close modal after confirmation
+      navigate("/products");
+    });
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false); // Close modal without updating
   };
 
   return (
@@ -74,6 +86,24 @@ const EditProduct = () => {
           Update
         </Button>
       </Box>
+
+      {/* Confirmation Modal */}
+      <Dialog open={openModal} onClose={handleCloseModal}>
+        <DialogTitle>Confirm Update</DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to update this product with the new details?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal} color="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handleConfirmUpdate} color="primary">
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
