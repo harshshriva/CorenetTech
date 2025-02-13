@@ -1,4 +1,4 @@
-# CorenetTech
+# Corenet Tech
 # E-commerce Product Management Dashboard
 
 ## Project Overview
