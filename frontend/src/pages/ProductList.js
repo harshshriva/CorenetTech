@@ -43,17 +43,17 @@ const ProductList = () => {
     deleteProduct(productIdToDelete).then(() => {
       setProducts(products.filter((product) => product._id !== productIdToDelete));
       setFilteredProducts(filteredProducts.filter((product) => product._id !== productIdToDelete));
-      setOpen(false); // Close the modal after deletion
+      setOpen(false); 
     });
   };
 
   const handleOpenModal = (id) => {
     setProductIdToDelete(id);
-    setOpen(true); // Open the confirmation modal
+    setOpen(true); 
   };
 
   const handleCloseModal = () => {
-    setOpen(false); // Close the modal without deleting
+    setOpen(false); 
     setProductIdToDelete(null);
   };
 
@@ -90,7 +90,6 @@ const ProductList = () => {
         Add Product
       </Button>
 
-      {/* Search Input */}
       <TextField
         label="Search by Name"
         variant="outlined"
@@ -100,7 +99,6 @@ const ProductList = () => {
         sx={{ marginTop: 2 }}
       />
 
-      {/* Sort Dropdown */}
       <FormControl variant="outlined" sx={{ marginTop: 2, minWidth: 120 }}>
         <InputLabel>Sort Order</InputLabel>
         <Select value={sortOrder} onChange={handleSort} label="Sort Order">
@@ -146,7 +144,6 @@ const ProductList = () => {
         </Table>
       </TableContainer>
 
-      {/* Confirmation Dialog */}
       <Dialog open={open} onClose={handleCloseModal}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>

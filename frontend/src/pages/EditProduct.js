@@ -10,7 +10,7 @@ const EditProduct = () => {
   const [price, setPrice] = useState("");
   const [nameError, setNameError] = useState("");
   const [priceError, setPriceError] = useState("");
-  const [openModal, setOpenModal] = useState(false); // State to control modal visibility
+  const [openModal, setOpenModal] = useState(false); 
 
   useEffect(() => {
     fetchProducts().then((res) => {
@@ -26,7 +26,7 @@ const EditProduct = () => {
     e.preventDefault();
     let valid = true;
 
-    // Validate product name
+    
     if (!name) {
       setNameError("Product name is required");
       valid = false;
@@ -34,7 +34,7 @@ const EditProduct = () => {
       setNameError("");
     }
 
-    // Validate price
+   
     if (!price || isNaN(price) || parseFloat(price) <= 0) {
       setPriceError("Please enter a valid price");
       valid = false;
@@ -43,19 +43,19 @@ const EditProduct = () => {
     }
 
     if (valid) {
-      setOpenModal(true); // Open confirmation modal if valid
+      setOpenModal(true); 
     }
   };
 
   const handleConfirmUpdate = () => {
     editProduct(id, { name, price }).then(() => {
-      setOpenModal(false); // Close modal after confirmation
+      setOpenModal(false); 
       navigate("/products");
     });
   };
 
   const handleCloseModal = () => {
-    setOpenModal(false); // Close modal without updating
+    setOpenModal(false); 
   };
 
   return (
@@ -87,7 +87,6 @@ const EditProduct = () => {
         </Button>
       </Box>
 
-      {/* Confirmation Modal */}
       <Dialog open={openModal} onClose={handleCloseModal}>
         <DialogTitle>Confirm Update</DialogTitle>
         <DialogContent>

@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-connectDB(); // Connect to MongoDB
+connectDB(); 
 
 app.use('/api/products', productRoutes);
 

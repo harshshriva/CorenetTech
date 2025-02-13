@@ -21,7 +21,6 @@ const AddProduct = () => {
     e.preventDefault();
     let valid = true;
 
-    // Validate product name
     if (!name) {
       setNameError("Product name is required");
       valid = false;
@@ -29,7 +28,6 @@ const AddProduct = () => {
       setNameError("");
     }
 
-    // Validate price
     if (!price || isNaN(price) || parseFloat(price) <= 0) {
       setPriceError("Please enter a valid price");
       valid = false;
