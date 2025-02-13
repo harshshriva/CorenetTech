@@ -43,7 +43,7 @@ Install dependencies:
 npm install
 
 Start the backend server using nodemon:
-nodemon server.js
+npm run start
 
 ## Frontend
 3. Set up the Frontend
